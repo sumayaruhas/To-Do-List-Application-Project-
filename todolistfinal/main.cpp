@@ -137,11 +137,45 @@ void displayTask() {
         display.close();
 
     }
+static bool comparedate(const Task& a,const Task& b){
+            return a.dueDate < b.dueDate;
+        }
+
     void displayTasksByDueDate(){
+cout<<endl<<endl<<endl<<endl<<endl<<endl;
+        vector<Task> tasks;
+        ifstream markt("tododata.txt");
 
+        string line;
+        while(getline(markt,line)){
+            Task task;
+            stringstream ss(line);
+            getline(ss, task.taskno, '\t');
+            getline(ss, task.name, '\t');
+            getline(ss, task.description, '\t');
+            getline(ss, task.dueDate, '\t');
+            ss >> task.complete;
+            tasks.push_back(task);
+        }
+        markt.close();
+sort(tasks.begin(),tasks.end(), Task::comparedate);
+ for(const auto& t:tasks){
+            cout << "\t\t\t\tTask No          : " << t.taskno << endl;
+            cout << "\t\t\t\tTask Name        : " << t.name << endl;
+            cout << "\t\t\t\tTask Description : " << t.description << endl;
+            cout << "\t\t\t\tTask Due Date    : " << t.dueDate << endl;
+            cout<<  "\t\t\t\tCompleted        : "<< (t.complete?"Yes":"No")<<endl;
+            cout<<"\t\t\t\t-------------------------------------"<<endl;
+           // cout<<"\t\t\t\t-------------------------------------"<<endl;
 
-        
+        }
+        conti();
+
     }
+
+
+
+    
     void markTask(){
         cout<<endl<<endl<<endl<<endl<<endl<<endl;
         vector<Task> tasks;
@@ -158,6 +192,7 @@ void displayTask() {
             ss >> task.complete;
             tasks.push_back(task);
         }
+
         markt.close();
         string tasktomark;
         cout<<"\t\t\t\tEnter Task No To Mark as Complete : ";
