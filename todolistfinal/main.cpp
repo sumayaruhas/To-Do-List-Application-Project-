@@ -260,6 +260,7 @@ void displayTask() {
             getline(ss, task.name, '\t');
             getline(ss, task.description, '\t');
             getline(ss, task.dueDate, '\t');
+            ss >> task.complete;
             tasks.push_back(task);
         }
         markt.close();
@@ -276,7 +277,7 @@ if(it==tasks.end()){
 tasks.erase(it,tasks.end());
 ofstream todo("tododata.txt",ios::trunc);
 for(const auto& task : tasks){
-            todo<<task.taskno<<'\t'<<task.name<<'\t'<<task.description<<'\t'<<task.dueDate<<'\t'<<endl;
+            todo<<task.taskno<<'\t'<<task.name<<'\t'<<task.description<<'\t'<<task.dueDate<<'\t'<<task.complete<<endl;
         }
         cout<<"\t\t\t\tTask Deleted Sucessfully"<<endl;
         todo.close();
