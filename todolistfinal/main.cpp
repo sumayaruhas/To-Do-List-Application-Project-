@@ -27,10 +27,11 @@ conti();
         cout<<endl<<endl<<endl<<endl<<endl<<endl;
         cout<<"\t\t\t\t1. Add Task"<<endl;
         cout<<"\t\t\t\t2. Display Tasks"<<endl;
-        cout<<"\t\t\t\t3. Mark Task as Completed"<<endl;
-        cout<<"\t\t\t\t4. Update Tasks"<<endl;
-        cout<<"\t\t\t\t5. Delete Task"<<endl;
-        cout<<"\t\t\t\t6. Exit"<<endl;
+        cout<<"\t\t\t\t3. Display Tasks By Due Dates"<<endl;
+        cout<<"\t\t\t\t4. Mark Task as Completed"<<endl;
+        cout<<"\t\t\t\t5. Update Tasks"<<endl;
+        cout<<"\t\t\t\t6. Delete Task"<<endl;
+        cout<<"\t\t\t\t7. Exit"<<endl;
 
         cout<<"\t\t\t\tEnter Your Choice : ";
         int choice;
@@ -45,18 +46,22 @@ conti();
                 displayTask();
                 break;
             case 3:
+            system("cls");
+            displayTasksByDueDate();
+            break;
+            case 4:
                 system("cls");
                 markTask();
                 break;
-            case 4:
+            case 5:
                 system("cls");
                 updateTask();
                 break;
-            case 5:
+            case 6:
                 system("cls");
                 deleteTask();
                 break;
-            case 6:
+            case 7:
                 system("cls");
                  cout<<endl<<endl<<endl<<endl<<endl<<endl;
             cout<<"\t\t\t\tThank You For Using My App!"<<endl;
@@ -114,24 +119,28 @@ void displayTask() {
             stringstream ss(line);
             string taskno, name, description, dueDate;
             bool complete;
-
             getline(ss, taskno, '\t');
             getline(ss, name, '\t');
             getline(ss, description, '\t');
             getline(ss, dueDate, '\t');
            ss >> complete;
-
             cout << "\t\t\t\tTask No          : " << taskno << endl;
             cout << "\t\t\t\tTask Name        : " << name << endl;
             cout << "\t\t\t\tTask Description : " << description << endl;
             cout << "\t\t\t\tTask Due Date    : " << dueDate << endl;
             cout<<  "\t\t\t\tCompleted        : "<< (complete?"Yes":"No")<<endl;
             cout<<"\t\t\t\t-------------------------------------"<<endl;
+           // cout<<"\t\t\t\t-------------------------------------"<<endl;
 
         }
         conti();
         display.close();
 
+    }
+    void displayTasksByDueDate(){
+
+
+        
     }
     void markTask(){
         cout<<endl<<endl<<endl<<endl<<endl<<endl;
