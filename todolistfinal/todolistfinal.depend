@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1719691031 source:e:\todolistfinal\main.cpp
+	<iostream>
+	<string>
+	<algorithm>
+	<vector>
+	<fstream>
+	<sstream>
+
