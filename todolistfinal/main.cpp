@@ -70,7 +70,7 @@ conti();
 
     void conti(){
         string xx;
-        cout<<endl<<endl<<"\t\t\t\tPress Any Key To Continue : ";
+        cout<<endl<<endl<<"\t\t\tPress Any Key To Continue : ";
         cin>>xx;
         system("cls");
         opt();
