@@ -29,9 +29,10 @@ conti();
         cout<<"\t\t\t\t2. Display Tasks"<<endl;
         cout<<"\t\t\t\t3. Display Tasks By Due Dates"<<endl;
         cout<<"\t\t\t\t4. Mark Task as Completed"<<endl;
-        cout<<"\t\t\t\t5. Update Tasks"<<endl;
-        cout<<"\t\t\t\t6. Delete Task"<<endl;
-        cout<<"\t\t\t\t7. Exit"<<endl;
+        cout<<"\t\t\t\t5. Check Out Pending Tasks"<<endl;
+        cout<<"\t\t\t\t6. Update Tasks"<<endl;
+        cout<<"\t\t\t\t7. Delete Task"<<endl;
+        cout<<"\t\t\t\t8. Exit"<<endl;
 
         cout<<"\t\t\t\tEnter Your Choice : ";
         int choice;
@@ -54,14 +55,18 @@ conti();
                 markTask();
                 break;
             case 5:
+            system("cls");
+            chkpending();
+            break;
+            case 6:
                 system("cls");
                 updateTask();
                 break;
-            case 6:
+            case 7:
                 system("cls");
                 deleteTask();
                 break;
-            case 7:
+            case 8:
                 system("cls");
                  cout<<endl<<endl<<endl<<endl<<endl<<endl;
             cout<<"\t\t\t\tThank You For Using My App!"<<endl;
@@ -172,10 +177,36 @@ sort(tasks.begin(),tasks.end(), Task::comparedate);
         conti();
 
     }
+void chkpending()
+{
+    cout<<endl<<endl<<endl<<endl<<endl<<endl;
+    vector<Task> tasks;
+    ifstream pending("tododata.txt");
+    string line;
+    while(getline(pending,line)){
+        Task task;
+        stringstream ss(line);
+        getline(ss, task.taskno, '\t');
+        getline(ss, task.name, '\t');
+        getline(ss, task.description, '\t');
+        getline(ss, task.dueDate, '\t');
+        ss >> task.complete;
+        tasks.push_back(task); 
+    }
+for(const auto& t:tasks){
+    if(t.complete==false){
+            cout << "\t\t\t\tTask No          : " << t.taskno << endl;
+            cout << "\t\t\t\tTask Name        : " << t.name << endl;
+            cout << "\t\t\t\tTask Description : " << t.description << endl;
+            cout << "\t\t\t\tTask Due Date    : " << t.dueDate << endl;
+            //cout<<  "\t\t\t\tCompleted        : "<< (t.complete?"Yes":"No")<<endl;
+            cout<<"\t\t\t\t-------------------------------------"<<endl;
 
+    }
+}
 
-
-    
+conti();
+}
     void markTask(){
         cout<<endl<<endl<<endl<<endl<<endl<<endl;
         vector<Task> tasks;
