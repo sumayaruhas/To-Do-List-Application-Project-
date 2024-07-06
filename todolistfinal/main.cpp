@@ -12,7 +12,7 @@ public:
     bool complete;
 
 void welcome(){
-    cout<<endl<<endl<<endl<<endl<<endl<<endl;
+lines();
         cout<<"\t\t\t**************************************"<<endl;
         cout<<"\t\t\t=                                    ="<<endl;
         cout<<"\t\t\t=              Welcome To            ="<<endl;
@@ -24,7 +24,7 @@ conti();
 
 }
     void opt(){
-        cout<<endl<<endl<<endl<<endl<<endl<<endl;
+lines();
         cout<<"\t\t\t\t1. Add Task"<<endl;
         cout<<"\t\t\t\t2. Display Tasks"<<endl;
         cout<<"\t\t\t\t3. Display Tasks By Due Dates"<<endl;
@@ -68,7 +68,7 @@ conti();
                 break;
             case 8:
                 system("cls");
-                 cout<<endl<<endl<<endl<<endl<<endl<<endl;
+lines();
             cout<<"\t\t\t\tThank You For Using My App!"<<endl;
             exit(0);
 
@@ -85,12 +85,14 @@ conti();
         system("cls");
         opt();
     }
-
+void lines(){
+        cout<<endl<<endl<<endl<<endl<<endl;
+}
     void addTask()
     {
         ofstream todo;
         todo.open("tododata.txt", ios::app);
-        cout<<endl<<endl<<endl<<endl<<endl<<endl;
+lines();
         cout<<"\t\t\t\tEnter Task No                    : ";
         cin>>taskno;
         todo<<taskno<<'\t';
@@ -112,8 +114,8 @@ conti();
 
     }
 void displayTask() {
-    cout<<endl<<endl<<endl<<endl<<endl<<endl;
-        ifstream display("tododata.txt");
+lines();     
+   ifstream display("tododata.txt");
         if (!display) {
             cerr << "\t\t\t\tError opening file!" << endl;
             return;
@@ -147,8 +149,7 @@ static bool comparedate(const Task& a,const Task& b){
         }
 
     void displayTasksByDueDate(){
-cout<<endl<<endl<<endl<<endl<<endl<<endl;
-        vector<Task> tasks;
+lines();         vector<Task> tasks;
         ifstream markt("tododata.txt");
 
         string line;
@@ -179,8 +180,7 @@ sort(tasks.begin(),tasks.end(), Task::comparedate);
     }
 void chkpending()
 {
-    cout<<endl<<endl<<endl<<endl<<endl<<endl;
-    vector<Task> tasks;
+lines();     vector<Task> tasks;
     ifstream pending("tododata.txt");
     string line;
     while(getline(pending,line)){
@@ -208,8 +208,7 @@ for(const auto& t:tasks){
 conti();
 }
     void markTask(){
-        cout<<endl<<endl<<endl<<endl<<endl<<endl;
-        vector<Task> tasks;
+lines();         vector<Task> tasks;
         ifstream markt("tododata.txt");
 
         string line;
@@ -249,8 +248,7 @@ conti();
  conti();
     }
     void updateTask(){
-        cout<<endl<<endl<<endl<<endl<<endl<<endl;
-        vector<Task> tasks;
+lines();         vector<Task> tasks;
         ifstream update("tododata.txt");
 
         string line;
@@ -323,8 +321,7 @@ conti();
 
 
     void deleteTask(){
-        cout<<endl<<endl<<endl<<endl<<endl<<endl;
-        vector<Task> tasks;
+lines();         vector<Task> tasks;
         ifstream markt("tododata.txt");
 
         string line;
